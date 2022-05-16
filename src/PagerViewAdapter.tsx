@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Animated, Keyboard, StyleSheet } from 'react-native';
-import ViewPager, {
+import {
   PageScrollStateChangedNativeEvent,
+  PagerView,
 } from 'react-native-pager-view';
 import useAnimatedValue from './useAnimatedValue';
 import type {
@@ -12,7 +13,7 @@ import type {
   PagerProps,
 } from './types';
 
-const AnimatedViewPager = Animated.createAnimatedComponent(ViewPager);
+const AnimatedViewPager = Animated.createAnimatedComponent(PagerView);
 
 type Props<T extends Route> = PagerProps & {
   onIndexChange: (index: number) => void;
@@ -47,7 +48,7 @@ export default function PagerViewAdapter<T extends Route>({
 
   const listenersRef = React.useRef<Listener[]>([]);
 
-  const pagerRef = React.useRef<ViewPager>();
+  const pagerRef = React.useRef<PagerView>();
   const indexRef = React.useRef<number>(index);
   const navigationStateRef = React.useRef(navigationState);
 
